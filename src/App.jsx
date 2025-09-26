@@ -4,6 +4,7 @@ import Banner from './components/Banner';
 import TicketList from './components/TicketList';
 import TaskStatus from './components/TaskStatus';
 import ticketsData from './data/tickets.json';
+import Footer from './components/Footer';
 
 function App() {
   const [tickets, setTickets] = useState([]);
@@ -45,6 +46,8 @@ function App() {
           onComplete={handleComplete}
         />
       </main>
+
+       <Footer></Footer>
     </>
   )
 }
