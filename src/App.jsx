@@ -5,11 +5,15 @@ import TicketList from './components/TicketList';
 import TaskStatus from './components/TaskStatus';
 import ticketsData from './data/tickets.json';
 import Footer from './components/Footer';
+import { toast, ToastContainer} from 'react-toastify';
+
+
 
 function App() {
   const [tickets, setTickets] = useState([]);
   const [inProgress, setInProgress] = useState([]);
   const [resolved, setResolved] = useState([]);
+ 
 
   useEffect(() => {
     setTickets(ticketsData);
@@ -18,7 +22,7 @@ function App() {
   const handleSelect = (ticket) => {
     if (!inProgress.find(t => t.id === ticket.id)) {
       setInProgress([...inProgress, ticket]);
-      alert("Ticket added to In-Progress");
+      toast("Ticket added to In-Progress");
     }
   }
 
@@ -26,7 +30,7 @@ function App() {
     setInProgress(inProgress.filter(t => t.id !== ticket.id));
     setResolved([...resolved, ticket]);
     setTickets(tickets.filter(t => t.id !== ticket.id));
-    alert("Ticket marked as Resolved");
+    toast("Ticket marked as Resolved");
   }
 
   return (
@@ -48,6 +52,8 @@ function App() {
       </main>
 
        <Footer></Footer>
+
+       <ToastContainer></ToastContainer>
     </>
   )
 }
